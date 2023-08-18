@@ -32,6 +32,24 @@ npm run build
 yarn build
 ```
 
+## Database setup
+
+Make sure to copy .env.example variables to .env file
+Then for postgres connection, move to the terminal and setup this as mentioned below:
+
+psql -U postgres
+
+-> CREATE USER freedom_blitz;
+-> CREATE DATABASE freedom_blitz;
+-> ALTER USER freedom_blitz WITH LOGIN;
+-> ALTER USER freedom_blitz WITH PASSWORD '1234';
+-> GRANT ALL PRIVILEGES ON DATABASE freedom_blitz TO freedom_blitz;
+-> \c freedom_blitz postgres
+-> GRANT ALL ON SCHEMA public TO freedom_blitz;
+
+Now go to your client (pgAdmin or table plus) and connect to the database with above credentials
+It should work.
+
 ## ⚙️ Deployment
 
 Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).

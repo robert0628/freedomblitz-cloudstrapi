@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_accordion_accordions",
+  "info": {
+    "displayName": "Accordion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "qas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "accordion-qa.accordion-qa"
+    }
+  }
+}

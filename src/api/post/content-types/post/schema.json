@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "by": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "description": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    },
+    "image_banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "image-banner.image-banner"
+    },
+    "main_image_url": {
+      "type": "string"
+    },
+    "bottom_image_url": {
+      "type": "string"
+    },
+    "bottom_video_url": {
+      "type": "string"
+    }
+  }
+}

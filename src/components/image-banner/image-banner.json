@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_image_banner_image_banners",
+  "info": {
+    "displayName": "Image Banner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "image-banner-button.image-banner-button"
+    }
+  }
+}

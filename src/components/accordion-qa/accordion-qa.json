@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_accordion_qa_accordion_qas",
+  "info": {
+    "displayName": "AccordionQA"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "answer": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "editor_picks",
+  "info": {
+    "singularName": "editor-pick",
+    "pluralName": "editor-picks",
+    "displayName": "Editor Pick"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post.post"
+    }
+  }
+}

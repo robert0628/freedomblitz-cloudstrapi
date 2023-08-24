@@ -1,7 +1,8 @@
 {
   "collectionName": "components_image_banner_image_banners",
   "info": {
-    "displayName": "Image Banner"
+    "displayName": "Image Banner",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,13 +12,20 @@
     "sub_title": {
       "type": "string"
     },
-    "url": {
-      "type": "string"
-    },
     "buttons": {
       "type": "component",
       "repeatable": true,
       "component": "image-banner-button.image-banner-button"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

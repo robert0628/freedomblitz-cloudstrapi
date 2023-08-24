@@ -23,9 +23,9 @@
     "description": {
       "type": "text"
     },
-    "tags": {
+    "tag": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::tag.tag"
     },
     "image_banner": {
@@ -33,14 +33,28 @@
       "repeatable": false,
       "component": "image-banner.image-banner"
     },
-    "main_image_url": {
-      "type": "string"
-    },
-    "bottom_image_url": {
-      "type": "string"
-    },
     "bottom_video_url": {
       "type": "string"
+    },
+    "main_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "bottom_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

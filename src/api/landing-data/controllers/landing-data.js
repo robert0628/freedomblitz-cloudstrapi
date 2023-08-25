@@ -21,12 +21,25 @@ module.exports = {
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       })
       const featuredPosts = await strapi.entityService.findMany('api::featured-post.featured-post', {
-        populate: ['post.main_image', 'post.by', 'post.tag']
+        populate: ['post.main_image', 'post.by', 'post.tag'],
+        filters: {
+          post: {
+            tag: {
+              title: {
+                $in: ['Investments', 'Marketing', 'Sales']
+              }
+            }
+          }
+        }
+      })
+      const tags = await strapi.entityService.findMany('api::tag.tag', {
+        populate: ['parent']
       })
       ctx.body = {
         editorPicks,
         latestPosts,
         featuredPosts,
+        tags,
       };
     } catch (err) {
       ctx.body = err;

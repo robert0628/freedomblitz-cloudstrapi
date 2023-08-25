@@ -20,9 +20,13 @@ module.exports = {
         limit: 6,
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       })
+      const featuredPosts = await strapi.entityService.findMany('api::featured-post.featured-post', {
+        populate: ['post.main_image', 'post.by', 'post.tag']
+      })
       ctx.body = {
         editorPicks,
         latestPosts,
+        featuredPosts,
       };
     } catch (err) {
       ctx.body = err;

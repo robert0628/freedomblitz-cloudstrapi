@@ -7,7 +7,7 @@ module.exports = {
 
       const searchCriteria = {
         fields: ['title'],
-        populate: {
+        _populate: {
           tag: true,
           by: true,
           main_image: true

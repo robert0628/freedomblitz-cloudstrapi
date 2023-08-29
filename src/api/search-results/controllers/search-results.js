@@ -6,19 +6,23 @@ module.exports = {
       let { query, page = 1, pageSize = 24 } = ctx.query;
 
 
-      const searchCriteria = {
-        fields: ['title'],
-        _populate: { main_image: true, tag: true, by: { fields: ["username", "id"] } },
-        start: (page-1)*pageSize, limit: pageSize,
-        sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
+      const searchCriteria  = {
+        select: ["id", "title", "description"],
+        populate: {
+          main_image: { select: ["id", "url", "width", "height"] },
+          tag: { select: ["id", "title"] },
+          by: { select: ["id", "username"] }
+        },
+        offset: (page-1)*pageSize, limit: pageSize,
+        orderBy: [{ title: 'asc' }, { publishedAt: 'desc' }]
       };
 
       if (query) {
-    
         searchCriteria.where = {
-          title : {
-            $containsi: query,
-          },
+          $or: [
+            { title: { $containsi: query } },
+            { tag: { title: { $containsi: query } } }
+          ]
         };
       }
 

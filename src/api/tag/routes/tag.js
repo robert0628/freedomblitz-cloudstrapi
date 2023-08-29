@@ -1,9 +1,14 @@
-'use strict';
-
-/**
- * tag router
- */
-
-const { createCoreRouter } = require('@strapi/strapi').factories;
-
-module.exports = createCoreRouter('api::tag.tag');
+module.exports = {
+    routes: [
+      {
+       method: 'GET',
+       path: '/tags',
+       handler: 'tag.getTags',
+       config: {
+         policies: [],
+         middlewares: [],
+       },
+      },
+    ],
+  };
+  

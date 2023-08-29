@@ -1,9 +1,18 @@
 'use strict';
 
-/**
- * tag controller
- */
+module.exports = {
+  getTags: async (ctx, next) => {
+    try {
+        const tags = await strapi.entityService.findMany('api::tag.tag', {
+            populate: ['parent']
+        });
 
-const { createCoreController } = require('@strapi/strapi').factories;
-
-module.exports = createCoreController('api::tag.tag');
+        ctx.body = {
+            tags,
+        };
+    } catch (err) {
+        console.log(err);
+        ctx.body = err;
+    }
+  }
+};

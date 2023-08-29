@@ -26,6 +26,7 @@ module.exports = {
         };
       }
 
+      // @ts-ignore
       const searchPosts = await strapi.db.query('api::post.post').findMany(searchCriteria);
 
       ctx.body = {

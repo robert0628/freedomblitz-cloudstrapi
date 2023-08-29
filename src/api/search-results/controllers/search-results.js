@@ -5,13 +5,10 @@ module.exports = {
     try {
       let { query, page = 1, pageSize = 24 } = ctx.query;
 
+
       const searchCriteria = {
         fields: ['title'],
-        _populate: {
-          tag: true,
-          by: true,
-          main_image: true
-        },
+        _populate: { main_image: true, tag: true, by: { fields: ["username", "id"] } },
         start: (page-1)*pageSize, limit: pageSize,
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       };

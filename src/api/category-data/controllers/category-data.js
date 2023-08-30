@@ -11,6 +11,7 @@ module.exports = {
       const tags = await strapi.entityService.findMany('api::tag.tag', {
         populate: ['parent']
       })
+      category = category.split('-').join(' ')
       const { rows: posts } = await strapi.db.connection.raw(`
         SELECT 
           pp.id, 

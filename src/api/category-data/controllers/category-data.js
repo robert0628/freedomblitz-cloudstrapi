@@ -18,7 +18,8 @@ module.exports = {
           pp.title, 
           JSON_BUILD_OBJECT('title', pt.title, 'id', pt.id) as tag,
           JSON_BUILD_OBJECT('username', pup.username, 'id', pup.id) as by,
-          JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image
+          JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image,
+          COUNT(pp.id) OVER() as total_results
         FROM public.posts pp
         JOIN public.posts_tag_links ptl ON pp.id = ptl.post_id
         JOIN public.tags pt ON ptl.tag_id = pt.id
@@ -36,7 +37,7 @@ module.exports = {
       `, [category, category, pageSize, (page - 1)*pageSize])
       ctx.body = {
         posts,
-        tags,
+        tags
       };
     } catch (err) {
       console.log(err)

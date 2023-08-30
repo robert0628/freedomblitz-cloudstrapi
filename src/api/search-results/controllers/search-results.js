@@ -21,16 +21,18 @@ module.exports = {
         searchCriteria.where = {
           $or: [
             { title: { $containsi: query } },
-            { tag: { title: { $containsi: query } } }
+            { tag: { title: { $containsi: query } } },
+            { by: { username:  { $containsi : query }}}
           ]
         };
       }
 
       // @ts-ignore
-      const searchPosts = await strapi.db.query('api::post.post').findMany(searchCriteria);
+      const data = await strapi.db.query('api::post.post').findWithCount(searchCriteria);
 
       ctx.body = {
-        searchPosts
+        searchedPosts : data[0],
+        totalPosts: data[1],
       };
     } catch (err) {
       ctx.body = err;

@@ -15,23 +15,24 @@ module.exports = {
         SELECT 
           pp.id, 
           pp.title, 
-          JSON_BUILD_OBJECT('title', pt.title) as tag,
-          JSON_BUILD_OBJECT('username', pup.username) as by,
+          JSON_BUILD_OBJECT('title', pt.title, 'id', pt.id) as tag,
+          JSON_BUILD_OBJECT('username', pup.username, 'id', pup.id) as by,
           JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image
         FROM public.posts pp
         JOIN public.posts_tag_links ptl ON pp.id = ptl.post_id
         JOIN public.tags pt ON ptl.tag_id = pt.id
-        JOIN public.tags_parent_links ptpl ON ptpl.inv_tag_id = pt.id
         JOIN public.posts_by_links ppbl ON ppbl.post_id = pp.id
         JOIN public.up_users pup ON pup.id = ppbl.user_id
         JOIN public.files_related_morphs pfrm ON pfrm.related_id = pp.id
         JOIN public.files pf ON pf.id = pfrm.file_id
-        WHERE LOWER(pt.title) LIKE ? OR pt.title LIKE (
-          SELECT LOWER(title) FROM public.tags WHERE id = ptpl.tag_id
-        )
-        GROUP BY pp.id, pt.title, pup.username, pf.url, pf.width, pf.height
+        GROUP BY pp.id, pt.title, pup.username, pf.url, pf.width, pf.height, pt.id, pup.id
+        HAVING LOWER(pt.title) LIKE ? OR (
+          SELECT LOWER(title) FROM public.tags ptt WHERE ptt.id = (
+            SELECT inv_tag_id FROM public.tags_parent_links WHERE tag_id = pt.id
+          )
+        ) LIKE ?
         LIMIT ? OFFSET ?
-      `, [category, pageSize, (page - 1)*pageSize])
+      `, [category, category, pageSize, (page - 1)*pageSize])
       ctx.body = {
         posts,
         tags,

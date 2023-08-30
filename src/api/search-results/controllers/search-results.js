@@ -29,9 +29,17 @@ module.exports = {
       // @ts-ignore
       const data = await strapi.db.query('api::post.post').findWithCount(searchCriteria);
 
+      let editorPicks = []
+      if(!data?.[0]?.length) {
+        editorPicks = await strapi.entityService.findMany('api::editor-pick.editor-pick', {
+          populate: ['post.main_image', 'post.by', 'post.tag']
+        })
+      }
+
       ctx.body = {
         searchedPosts : data[0],
         totalPosts: data[1],
+        editorPicks
       };
     } catch (err) {
       ctx.body = err;

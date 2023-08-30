@@ -32,14 +32,10 @@ module.exports = {
           }
         }
       })
-      const tags = await strapi.entityService.findMany('api::tag.tag', {
-        populate: ['parent']
-      })
       ctx.body = {
         editorPicks,
         latestPosts,
         featuredPosts,
-        tags,
       };
     } catch (err) {
       ctx.body = err;

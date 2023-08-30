@@ -5,7 +5,6 @@ module.exports = {
     try {
       let { query, page = 1, pageSize = 24 } = ctx.query;
 
-
       const searchCriteria  = {
         select: ["id", "title", "description"],
         populate: {

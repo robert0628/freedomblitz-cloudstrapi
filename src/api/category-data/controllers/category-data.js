@@ -8,9 +8,6 @@ module.exports = {
   categoryData: async (ctx, next) => {
     try {
       let { category, page = 1, pageSize = 24 } = ctx.query;
-      const tags = await strapi.entityService.findMany('api::tag.tag', {
-        populate: ['parent']
-      })
       category = category.split('-').join(' ')
       const { rows: posts } = await strapi.db.connection.raw(`
         SELECT 
@@ -36,8 +33,7 @@ module.exports = {
         LIMIT ? OFFSET ?
       `, [category, category, pageSize, (page - 1)*pageSize])
       ctx.body = {
-        posts,
-        tags
+        posts
       };
     } catch (err) {
       console.log(err)

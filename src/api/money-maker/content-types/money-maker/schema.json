@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "money_makers",
+  "info": {
+    "singularName": "money-maker",
+    "pluralName": "money-makers",
+    "displayName": "Money Makers",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "by": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "text"
+    },
+    "interval": {
+      "type": "string",
+      "required": true,
+      "default": "month"
+    }
+  }
+}

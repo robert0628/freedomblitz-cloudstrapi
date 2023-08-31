@@ -9,7 +9,7 @@ module.exports = {
     try {
       const editorPicks = await strapi.entityService.findMany('api::editor-pick.editor-pick', {
         populate: ['post.main_image', 'post.by', 'post.tag']
-      })
+      });
       const latestPosts = await strapi.entityService.findMany('api::post.post', {
         fields: ['title'],
         populate: {
@@ -19,7 +19,7 @@ module.exports = {
         },
         limit: 6,
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
-      })
+      });
       const featuredPosts = await strapi.entityService.findMany('api::featured-post.featured-post', {
         populate: ['post.main_image', 'post.by', 'post.tag'],
         filters: {
@@ -31,11 +31,15 @@ module.exports = {
             }
           }
         }
-      })
+      });
+      const moneyMakers = await strapi.entityService.findMany('api::money-maker.money-maker', {
+        populate: ['image']
+      });
       ctx.body = {
         editorPicks,
         latestPosts,
         featuredPosts,
+        moneyMakers
       };
     } catch (err) {
       ctx.body = err;

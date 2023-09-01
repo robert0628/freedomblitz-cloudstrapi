@@ -19,7 +19,7 @@ module.exports = {
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       })
       const topPicks = await strapi.entityService.findMany('api::top-pick.top-pick', {
-        populate: ['post.main_image', 'post.by', 'post.tag']
+        populate: ['post.main_image', 'post.by', 'post.tag'],
       });
       const { rows: relatedPosts } = await strapi.db.connection.raw(`
         SELECT 
@@ -40,10 +40,18 @@ module.exports = {
         ORDER BY similarity(pp.title, (SELECT title FROM public.posts WHERE id = ?)) desc
         LIMIT 6
       `, [id, id])
+      const details = await strapi.db.query('api::post.post').findMany({
+        where: {
+          id,
+        },
+        // @ts-ignore
+        populate: { bottom_media: true }
+      })
       ctx.body = {
         latestPosts,
         topPicks,
-        relatedPosts
+        relatedPosts,
+        details: details?.[0]
       }
     } catch (err) {
       console.log(err)

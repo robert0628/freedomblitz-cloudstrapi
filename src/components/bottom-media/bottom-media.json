@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_bottom_media_bottom_medias",
+  "info": {
+    "displayName": "Bottom Media",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "caption_text": {
+      "type": "string"
+    },
+    "caption_link_text": {
+      "type": "string"
+    },
+    "caption_link": {
+      "type": "string"
+    },
+    "video": {
+      "type": "string"
+    }
+  }
+}

@@ -4,14 +4,15 @@
   "info": {
     "singularName": "top-pick",
     "pluralName": "top-picks",
-    "displayName": "Top Pick"
+    "displayName": "Top Pick",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "posts": {
+    "post": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::post.post"

@@ -33,28 +33,21 @@
       "repeatable": false,
       "component": "image-banner.image-banner"
     },
-    "bottom_video_url": {
-      "type": "string"
-    },
     "main_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "bottom_image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "bottom_media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "bottom-media.bottom-media"
     }
   }
 }

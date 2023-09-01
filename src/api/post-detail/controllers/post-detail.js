@@ -18,8 +18,12 @@ module.exports = {
         limit: 6,
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       })
+      const topPicks = await strapi.entityService.findMany('api::top-pick.top-pick', {
+        populate: ['post.main_image', 'post.by', 'post.tag']
+      });
       ctx.body = {
-        latestPosts
+        latestPosts,
+        topPicks,
       }
     } catch (err) {
       ctx.body = err;

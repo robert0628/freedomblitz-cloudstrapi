@@ -1,20 +1,19 @@
 {
   "kind": "collectionType",
-  "collectionName": "editor_picks",
+  "collectionName": "top_picks",
   "info": {
-    "singularName": "editor-pick",
-    "pluralName": "editor-picks",
-    "displayName": "Editor Pick",
-    "description": ""
+    "singularName": "top-pick",
+    "pluralName": "top-picks",
+    "displayName": "Top Pick"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "post": {
+    "posts": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::post.post"
     }
   }

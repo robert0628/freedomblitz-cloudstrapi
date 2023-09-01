@@ -14,7 +14,7 @@
   "attributes": {
     "post": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::post.post"
     }
   }

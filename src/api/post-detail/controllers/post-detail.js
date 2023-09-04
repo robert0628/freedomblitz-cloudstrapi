@@ -19,7 +19,7 @@ module.exports = {
         sort: [{ title: 'asc' }, { publishedAt: 'desc' }]
       })
       const topPicks = await strapi.entityService.findMany('api::top-pick.top-pick', {
-        populate: ['post.main_image', 'post.by', 'post.tag'],
+        populate: ['post.main_image', 'post.by.image', 'post.tag'],
       });
       const { rows: relatedPosts } = await strapi.db.connection.raw(`
         SELECT 

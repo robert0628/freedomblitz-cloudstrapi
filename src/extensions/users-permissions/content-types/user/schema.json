@@ -81,20 +81,25 @@
       "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "money_makers": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::money-maker.money-maker",
       "mappedBy": "by"
+    },
+    "position": {
+      "type": "string",
+      "required": true
     }
   }
 }

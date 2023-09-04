@@ -8,6 +8,11 @@ module.exports = {
   postDetail: async (ctx, next) => {
     try {
       const { id } = ctx.params
+      const post = await strapi.db.query('api::post.post').findOne({
+        where: {id},
+        populate: ['main_image', 'by.image', 'tag'],
+      });
+
       const latestPosts = await strapi.entityService.findMany('api::post.post', {
         fields: ['title'],
         populate: {
@@ -48,6 +53,7 @@ module.exports = {
         populate: { bottom_media: true }
       })
       ctx.body = {
+        post,
         latestPosts,
         topPicks,
         relatedPosts,

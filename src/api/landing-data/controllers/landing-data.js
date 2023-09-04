@@ -33,7 +33,7 @@ module.exports = {
         }
       });
       const moneyMakers = await strapi.entityService.findMany('api::money-maker.money-maker', {
-        populate: ['image']
+        populate: ['image', 'by']
       });
       ctx.body = {
         editorPicks,

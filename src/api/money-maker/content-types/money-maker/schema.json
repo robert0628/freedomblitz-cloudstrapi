@@ -24,10 +24,6 @@
       "type": "decimal",
       "required": true
     },
-    "by": {
-      "type": "string",
-      "required": true
-    },
     "title": {
       "type": "text"
     },
@@ -35,6 +31,12 @@
       "type": "string",
       "required": true,
       "default": "month"
+    },
+    "by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "money_makers"
     }
   }
 }

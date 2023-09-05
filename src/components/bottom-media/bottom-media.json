@@ -9,7 +9,7 @@
     "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -18,16 +18,21 @@
       ]
     },
     "caption_text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "caption_link_text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "caption_link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "video": {
-      "type": "string"
+    "youtube_video_url": {
+      "type": "string",
+      "required": true,
+      "regex": "^(?:https?:\\/\\/)?(?:www\\.)?(?:youtube\\.com\\/watch\\?v=|youtu.be\\/)([a-zA-Z0-9_-]+)(?:\\S+)?$"
     }
   }
 }

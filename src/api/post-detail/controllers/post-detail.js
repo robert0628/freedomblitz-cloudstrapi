@@ -10,7 +10,7 @@ module.exports = {
       const { id } = ctx.params
       const post = await strapi.db.query('api::post.post').findOne({
         where: {id},
-        populate: ['main_image', 'by.image', 'tag', 'contributors.image'],
+        populate: ['main_image', 'by.image', 'tag', 'contributors.image', 'accordian.qas', 'boxed_content.content'],
       });
 
       const latestPosts = await strapi.entityService.findMany('api::post.post', {

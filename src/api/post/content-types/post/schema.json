@@ -54,6 +54,17 @@
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "posts_contibuted"
+    },
+    "accordian": {
+      "type": "component",
+      "repeatable": false,
+      "component": "accordion.accordion"
+    },
+    "boxed_content": {
+      "displayName": "boxed-content",
+      "type": "component",
+      "repeatable": false,
+      "component": "boxed-content.boxed-content"
     }
   }
 }

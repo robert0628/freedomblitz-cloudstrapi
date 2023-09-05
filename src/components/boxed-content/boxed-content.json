@@ -1,16 +1,16 @@
 {
-  "collectionName": "components_accordion_qa_accordion_qas",
+  "collectionName": "components_boxed_content_boxed_contents",
   "info": {
-    "displayName": "AccordionQA",
+    "displayName": "boxed-content",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "question": {
-      "type": "string",
+    "content": {
+      "type": "text",
       "required": true
     },
-    "answer": {
+    "heading": {
       "type": "text",
       "required": true
     }

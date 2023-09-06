@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_end_paras_end_paras",
+  "info": {
+    "displayName": "end_paras"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

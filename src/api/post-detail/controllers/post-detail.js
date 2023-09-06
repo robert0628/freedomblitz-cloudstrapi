@@ -9,8 +9,17 @@ module.exports = {
     try {
       const { id } = ctx.params
       const post = await strapi.db.query('api::post.post').findOne({
-        where: {id},
-        populate: ['main_image', 'by.image', 'tag', 'contributors.image', 'accordian.qas', 'boxed_content.content', 'bottom_media.image'],
+        where: { id },
+        populate: [
+          'main_image',
+          'by.image',
+          'tag',
+          'contributors.image',
+          'accordian.qas',
+          'boxed_content.content',
+          'bottom_media.image',
+          "content.body_paras", "content.quote.by.image", "content.end_paras"
+        ],
       });
 
       const latestPosts = await strapi.entityService.findMany('api::post.post', {

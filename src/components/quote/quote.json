@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_quote_quotes",
+  "info": {
+    "displayName": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "by": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_body_para_body_paras",
+  "info": {
+    "displayName": "Body Para"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

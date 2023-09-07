@@ -1,13 +1,13 @@
 {
-  "collectionName": "components_body_para_body_paras",
+  "collectionName": "components_lead_para_lead_paras",
   "info": {
-    "displayName": "Body Para"
+    "displayName": "Lead Para",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "text": {
-      "type": "text",
-      "required": true
+      "type": "text"
     },
     "highlight": {
       "displayName": "highlight",

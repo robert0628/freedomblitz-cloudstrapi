@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_highlight_highlights",
+  "info": {
+    "displayName": "highlight"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "integer"
+    }
+  }
+}

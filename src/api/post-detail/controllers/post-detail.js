@@ -18,7 +18,7 @@ module.exports = {
           'accordian.qas',
           'boxed_content.content',
           'bottom_media.image',
-          "content.body_paras", "content.quote.by.image", "content.end_paras"
+          "lead_para.highlight", "lead_para.link","body_paras.highlight", "body_paras.link", "quote.by.image", "end_paras.highlight", "end_paras.link",
         ],
       });
 

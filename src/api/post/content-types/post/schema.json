@@ -66,11 +66,41 @@
       "repeatable": false,
       "component": "boxed-content.boxed-content"
     },
-    "content": {
-      "displayName": "content",
+    "heading1": {
+      "type": "string"
+    },
+    "heading2": {
+      "type": "string"
+    },
+    "heading3": {
+      "type": "string"
+    },
+    "heading4": {
+      "type": "string"
+    },
+    "lead_para": {
+      "displayName": "Lead Para",
       "type": "component",
       "repeatable": false,
-      "component": "content.content"
+      "component": "lead-para.lead-para"
+    },
+    "body_paras": {
+      "displayName": "Body Para",
+      "type": "component",
+      "repeatable": true,
+      "component": "body-para.body-para"
+    },
+    "quote": {
+      "displayName": "quote",
+      "type": "component",
+      "repeatable": false,
+      "component": "quote.quote"
+    },
+    "end_paras": {
+      "displayName": "end_paras",
+      "type": "component",
+      "repeatable": true,
+      "component": "end-paras.end-paras"
     }
   }
 }

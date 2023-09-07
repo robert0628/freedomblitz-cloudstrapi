@@ -16,10 +16,6 @@ module.exports = {
           main_image: { select: ["id", "url", "width", "height"] },
           tag: { 
             select: ["id", "title"], 
-              
-            // include: {
-            //   parent: { select: ["title"] }
-            // } 
           },
           by: { select: ["id", "username"] }
         },

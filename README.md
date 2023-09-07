@@ -44,7 +44,6 @@ CREATE DATABASE freedom_blitz;
 ALTER USER freedom_blitz WITH LOGIN;
 ALTER USER freedom_blitz WITH PASSWORD '1234';
 GRANT ALL PRIVILEGES ON DATABASE freedom_blitz TO freedom_blitz;
-CREATE EXTENSION IF NOT EXISTS pg_trgm;
 \c freedom_blitz postgres
 GRANT ALL ON SCHEMA public TO freedom_blitz;
 ```

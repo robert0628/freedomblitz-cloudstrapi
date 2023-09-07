@@ -10,48 +10,32 @@ module.exports = {
       let { category, page = 1, pageSize = 24 } = ctx.query;
       category = category.split('-').join(' ')
       if(category === "all posts") {
-        const { rows: posts } = await strapi.db.connection.raw(`
-          SELECT 
-            pp.id, 
-            pp.title, 
-            JSON_BUILD_OBJECT('title', pt.title, 'id', pt.id) as tag,
-            JSON_BUILD_OBJECT('username', pup.username, 'id', pup.id) as by,
-            JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image
-          FROM public.posts pp
-          JOIN public.posts_tag_links ptl ON pp.id = ptl.post_id
-          JOIN public.tags pt ON ptl.tag_id = pt.id
-          JOIN public.posts_by_links ppbl ON ppbl.post_id = pp.id
-          JOIN public.up_users pup ON pup.id = ppbl.user_id
-          JOIN public.files_related_morphs pfrm ON pfrm.related_id = pp.id
-          JOIN public.files pf ON pf.id = pfrm.file_id
-          GROUP BY pp.id, pt.title, pup.username, pf.url, pf.width, pf.height, pt.id, pup.id
-          LIMIT ? OFFSET ?
-        `, [pageSize, (page - 1)*pageSize])
+        const posts = await strapi.db.query('api::post.post').findMany({
+          select: ["id", "title", "description"],
+          populate: {
+            // @ts-ignore
+            main_image: { select: ["id", "url", "width", "height"] },
+            tag: { select: ["id", "title"] },
+            by: { select: ["id", "username"] }
+          },
+          offset: (page-1)*pageSize, limit: pageSize,
+        })
         ctx.body = { posts }
         return
       }
-      const { rows: posts } = await strapi.db.connection.raw(`
-        SELECT 
-          pp.id, 
-          pp.title, 
-          JSON_BUILD_OBJECT('title', pt.title, 'id', pt.id) as tag,
-          JSON_BUILD_OBJECT('username', pup.username, 'id', pup.id) as by,
-          JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image
-        FROM public.posts pp
-        JOIN public.posts_tag_links ptl ON pp.id = ptl.post_id
-        JOIN public.tags pt ON ptl.tag_id = pt.id
-        JOIN public.posts_by_links ppbl ON ppbl.post_id = pp.id
-        JOIN public.up_users pup ON pup.id = ppbl.user_id
-        JOIN public.files_related_morphs pfrm ON pfrm.related_id = pp.id
-        JOIN public.files pf ON pf.id = pfrm.file_id
-        GROUP BY pp.id, pt.title, pup.username, pf.url, pf.width, pf.height, pt.id, pup.id
-        HAVING LOWER(pt.title) LIKE ? OR (
-          SELECT LOWER(title) FROM public.tags ptt WHERE ptt.id = (
-            SELECT inv_tag_id FROM public.tags_parent_links WHERE tag_id = pt.id
-          )
-        ) LIKE ?
-        LIMIT ? OFFSET ?
-      `, [category, category, pageSize, (page - 1)*pageSize])
+      const posts = await strapi.db.query('api::post.post').findMany({
+        select: ["id", "title", "description"],
+        populate: {
+          // @ts-ignore
+          main_image: { select: ["id", "url", "width", "height"] },
+          tag: { select: ["id", "title"] },
+          by: { select: ["id", "username"] }
+        },
+        where: {
+          tag: { title: { $containsi: category } }
+        },
+        offset: (page-1)*pageSize, limit: pageSize,
+      })
       ctx.body = {
         posts
       };

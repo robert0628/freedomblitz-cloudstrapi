@@ -35,31 +35,28 @@ module.exports = {
       const topPicks = await strapi.entityService.findMany('api::top-pick.top-pick', {
         populate: ['post.main_image', 'post.by.image', 'post.tag'],
       });
-      const { rows: relatedPosts } = await strapi.db.connection.raw(`
-        SELECT 
-          pp.id, 
-          pp.title, 
-          JSON_BUILD_OBJECT('title', pt.title, 'id', pt.id) as tag,
-          JSON_BUILD_OBJECT('username', pup.username, 'id', pup.id) as by,
-          JSON_BUILD_OBJECT('url', pf.url, 'width', pf.width, 'height', pf.height) as main_image
-        FROM public.posts pp
-        JOIN public.posts_tag_links ptl ON pp.id = ptl.post_id
-        JOIN public.tags pt ON ptl.tag_id = pt.id
-        JOIN public.posts_by_links ppbl ON ppbl.post_id = pp.id
-        JOIN public.up_users pup ON pup.id = ppbl.user_id
-        JOIN public.files_related_morphs pfrm ON pfrm.related_id = pp.id
-        JOIN public.files pf ON pf.id = pfrm.file_id
-        WHERE similarity(pp.title, (SELECT title FROM public.posts WHERE id = ?)) > 0.5
-        GROUP BY pp.id, pt.title, pup.username, pf.url, pf.width, pf.height, pt.id, pup.id
-        ORDER BY similarity(pp.title, (SELECT title FROM public.posts WHERE id = ?)) desc
-        LIMIT 6
-      `, [id, id])
       const details = await strapi.db.query('api::post.post').findMany({
         where: {
           id,
         },
         // @ts-ignore
         populate: { bottom_media: true }
+      })
+      const relatedPosts = await strapi.db.query('api::post.post').findMany({
+        select: ["id", "title", "description"],
+        populate: {
+          // @ts-ignore
+          main_image: { select: ["id", "url", "width", "height"] },
+          tag: { select: ["id", "title"] },
+          by: { select: ["id", "username"] }
+        },
+        where: {
+          $or: [
+            { title: { $containsi: details?.[0]?.title } },
+            { tag: { title: { $containsi: details?.[0]?.title } } },
+          ]
+        },
+        limit: 6,
       })
       ctx.body = {
         post,

@@ -1,13 +1,26 @@
 {
   "collectionName": "components_end_paras_end_paras",
   "info": {
-    "displayName": "end_paras"
+    "displayName": "end_paras",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "text": {
       "type": "text",
       "required": true
+    },
+    "highlight": {
+      "displayName": "highlight",
+      "type": "component",
+      "repeatable": true,
+      "component": "highlight.highlight"
+    },
+    "link": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "component": "link.link"
     }
   }
 }

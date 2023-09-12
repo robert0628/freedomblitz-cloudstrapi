@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_row_rows",
+  "info": {
+    "displayName": "row"
+  },
+  "options": {},
+  "attributes": {
+    "entry1": {
+      "type": "string",
+      "required": true
+    },
+    "entry2": {
+      "type": "string",
+      "required": true
+    },
+    "entry3": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

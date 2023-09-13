@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_table_tables",
+  "info": {
+    "displayName": "table"
+  },
+  "options": {},
+  "attributes": {
+    "heading1": {
+      "type": "string",
+      "required": true
+    },
+    "heading2": {
+      "type": "string",
+      "required": true
+    },
+    "heading3": {
+      "type": "string",
+      "required": true
+    },
+    "row": {
+      "displayName": "row",
+      "type": "component",
+      "repeatable": true,
+      "component": "row.row"
+    }
+  }
+}

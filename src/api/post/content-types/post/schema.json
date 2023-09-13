@@ -118,6 +118,12 @@
       "type": "component",
       "repeatable": true,
       "component": "content-links.content-links"
+    },
+    "source_links": {
+      "displayName": "Source Links",
+      "type": "component",
+      "repeatable": true,
+      "component": "source-links.source-links"
     }
   }
 }

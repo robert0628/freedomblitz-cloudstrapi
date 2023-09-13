@@ -22,6 +22,7 @@ module.exports = {
           "table.row",
           "numbered_section",
           "contents_links",
+          "source_links",
         ],
       });
 

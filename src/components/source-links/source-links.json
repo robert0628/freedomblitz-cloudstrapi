@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_source_links_source_links",
+  "info": {
+    "displayName": "Source Links"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

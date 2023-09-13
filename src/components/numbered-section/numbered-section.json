@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_numbered_section_numbered_sections",
+  "info": {
+    "displayName": "Numbered Section"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer",
+      "required": true
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

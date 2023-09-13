@@ -106,6 +106,12 @@
       "type": "component",
       "repeatable": false,
       "component": "table.table"
+    },
+    "numbered_section": {
+      "displayName": "Numbered Section",
+      "type": "component",
+      "repeatable": true,
+      "component": "numbered-section.numbered-section"
     }
   }
 }

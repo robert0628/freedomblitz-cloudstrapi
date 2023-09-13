@@ -19,7 +19,8 @@ module.exports = {
           'boxed_content.content',
           'bottom_media.image',
           "lead_para.highlight", "lead_para.link", "body_paras.highlight", "body_paras.link", "quote.by.image", "end_paras.highlight", "end_paras.link",
-          "table.row"
+          "table.row",
+          "numbered_section"
         ],
       });
 

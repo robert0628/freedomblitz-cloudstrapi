@@ -112,6 +112,12 @@
       "type": "component",
       "repeatable": true,
       "component": "numbered-section.numbered-section"
+    },
+    "contents_links": {
+      "displayName": "Content Links",
+      "type": "component",
+      "repeatable": true,
+      "component": "content-links.content-links"
     }
   }
 }

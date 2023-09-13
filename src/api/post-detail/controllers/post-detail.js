@@ -20,7 +20,8 @@ module.exports = {
           'bottom_media.image',
           "lead_para.highlight", "lead_para.link", "body_paras.highlight", "body_paras.link", "quote.by.image", "end_paras.highlight", "end_paras.link",
           "table.row",
-          "numbered_section"
+          "numbered_section",
+          "contents_links",
         ],
       });
 

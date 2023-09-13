@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_content_links_content_links",
+  "info": {
+    "displayName": "Content Links"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
